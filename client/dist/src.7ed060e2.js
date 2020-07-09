@@ -28396,30 +28396,43 @@ var NavigationBar = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(NavigationBar);
 
-  function NavigationBar() {
+  function NavigationBar(props) {
+    var _this;
+
     _classCallCheck(this, NavigationBar);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      data: []
+    };
+    fetch("http://localhost:3000/").then(function (response) {
+      return _this.setState({
+        data: response
+      });
+    });
+    return _this;
   }
 
   _createClass(NavigationBar, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return /*#__PURE__*/_react.default.createElement("ul", {
         id: "NavigationBar"
-      }, /*#__PURE__*/_react.default.createElement(_postLink.default, {
-        title: "Day 1",
-        link: "https://iframetester.com",
-        onLinkClick: function onLinkClick(link) {
-          _this.props.onLinkClick(link);
-        }
+      }, this.state.data.map(function (row) {
+        return /*#__PURE__*/_react.default.createElement(_postLink.default, {
+          title: row.name,
+          link: row.link,
+          onLinkClick: function onLinkClick(link) {
+            _this2.props.onLinkClick(link);
+          }
+        });
       }), /*#__PURE__*/_react.default.createElement(_postLink.default, {
         title: "Day 2",
         link: "https://codetheweb.blog/style-a-navigation-bar-css/",
         onLinkClick: function onLinkClick(link) {
-          _this.props.onLinkClick(link);
+          _this2.props.onLinkClick(link);
         }
       }));
     }
@@ -28621,7 +28634,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33477" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33529" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

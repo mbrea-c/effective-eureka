@@ -2,16 +2,28 @@ import React, { Component } from "react";
 import PostLink from "./postLink";
 
 class NavigationBar extends Component {
+
+	constructor(props){
+		super(props);
+		this.state = {
+			data: []
+		};
+		fetch("http://localhost:3000/")
+           .then((response)=>this.setState({data: response}))
+	}
+
 	render() {
 		return (
 			<ul id="NavigationBar">
-				<PostLink
-					title="Day 1"
-					link="https://iframetester.com"
+				{this.state.data.map( row => <PostLink 
+					title={row.name}
+					link={row.link}
 					onLinkClick={link => {
 						this.props.onLinkClick(link);
 					}}
-				/>
+					/>)
+				}
+
 				<PostLink
 					title="Day 2"
 					link="https://codetheweb.blog/style-a-navigation-bar-css/"
