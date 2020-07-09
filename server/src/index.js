@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Koa = require("koa");
 const cors = require("@koa/cors");
 const Router = require("koa-router");
@@ -17,6 +18,17 @@ const app = new Koa();
 const router = new Router();
 
 compile();
+fs.readdir("./posts", (err, files) => {
+	files.map(file => {
+		fileStat = fs.statSync(`./posts/${file}`);
+		console.log(fileStat);
+		knex("posts").insert({
+			id: file,
+			name: "a test",
+			date_posted: fileStat.birthtime
+		});
+	});
+});
 
 router.get("/getposts", async (ctx, next) => {
 	ctx.body = (await knex("posts").select("*")).map(row => {
