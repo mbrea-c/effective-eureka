@@ -28405,7 +28405,9 @@ var NavigationBar = /*#__PURE__*/function (_Component) {
     _this.state = {
       data: []
     };
-    fetch("http://localhost:3000/").then(function (response) {
+    fetch("http://localhost:3000/getposts").then(function (response) {
+      return response.json();
+    }).then(function (response) {
       return _this.setState({
         data: response
       });
@@ -28424,16 +28426,11 @@ var NavigationBar = /*#__PURE__*/function (_Component) {
         return /*#__PURE__*/_react.default.createElement(_postLink.default, {
           title: row.name,
           link: row.link,
+          key: row.id,
           onLinkClick: function onLinkClick(link) {
             _this2.props.onLinkClick(link);
           }
         });
-      }), /*#__PURE__*/_react.default.createElement(_postLink.default, {
-        title: "Day 2",
-        link: "https://codetheweb.blog/style-a-navigation-bar-css/",
-        onLinkClick: function onLinkClick(link) {
-          _this2.props.onLinkClick(link);
-        }
       }));
     }
   }]);
@@ -28634,7 +28631,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33529" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34499" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

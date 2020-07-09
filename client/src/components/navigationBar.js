@@ -8,7 +8,8 @@ class NavigationBar extends Component {
 		this.state = {
 			data: []
 		};
-		fetch("http://localhost:3000/")
+		fetch("http://localhost:3000/getposts")
+		   .then(response=>response.json())
            .then((response)=>this.setState({data: response}))
 	}
 
@@ -18,19 +19,13 @@ class NavigationBar extends Component {
 				{this.state.data.map( row => <PostLink 
 					title={row.name}
 					link={row.link}
+					key = {row.id}
 					onLinkClick={link => {
 						this.props.onLinkClick(link);
 					}}
 					/>)
-				}
 
-				<PostLink
-					title="Day 2"
-					link="https://codetheweb.blog/style-a-navigation-bar-css/"
-					onLinkClick={link => {
-						this.props.onLinkClick(link);
-					}}
-				/>
+				}
 			</ul>
 		);
 	}
