@@ -1,5 +1,8 @@
 const Koa = require("koa");
+const cors = require("@koa/cors");
 const Router = require("koa-router");
+const serve = require("koa-static");
+const compile = require("./compilePosts.js");
 const knex = require("knex")({
 	client: "pg",
 	connection: {
@@ -13,14 +16,7 @@ const knex = require("knex")({
 const app = new Koa();
 const router = new Router();
 
-router.get("/", (ctx, next) => {
-	console.log(ctx.request);
-	ctx.body = "Hello world eureka";
-	knex("posts")
-		.select("*")
-		.then(rows => console.log(rows));
-	console.log(ctx.response);
-});
+compile();
 
 router.get("/getposts", async (ctx, next) => {
 	ctx.body = (await knex("posts").select("*")).map(row => {
@@ -29,6 +25,8 @@ router.get("/getposts", async (ctx, next) => {
 	});
 });
 
+app.use(cors());
+app.use(serve("./public"));
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(3000);
