@@ -9,6 +9,10 @@
 	overflow: auto; /* Enable scrolling if the sidenav has too much content */
 }
 
+#PostLink{
+	display: list-item
+}
+
 #PostFrame {
 	width: 85%;
 	height: 100%;
