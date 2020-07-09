@@ -6,7 +6,7 @@ const knex = require("knex")({
 		host: "127.0.0.1",
 		user: "manuel",
 		password: "",
-		database: "postgres"
+		database: "eureka"
 	}
 });
 
@@ -14,7 +14,7 @@ app.use(async ctx => {
 	console.log(ctx.request);
 	ctx.body = "Hello world eureka";
 	knex("posts")
-		.select("posts.id")
+		.select("*")
 		.then(rows => console.log(rows));
 	console.log(ctx.response);
 });
