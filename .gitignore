@@ -2,3 +2,7 @@ client/node_modules
 client/node_modules/*
 client/.cache
 client/.cache/*
+server/node_modules
+server/node_modules/*
+server/.cache
+server/.cache/*
