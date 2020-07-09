@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "knex": "^0.21.1",
     "koa": "^2.13.0",
     "koa-router": "^9.1.0",
+    "koa-static": "^5.0.0",
     "pg": "^8.2.2"
   }
 }
