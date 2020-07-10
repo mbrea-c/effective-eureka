@@ -7,4 +7,3 @@ server/node_modules/*
 server/.cache
 server/.cache/*
 server/public
-server/posts

@@ -3,14 +3,14 @@ import React, { Component } from "react";
 class PostLink extends Component {
 	render() {
 		return (
-			<li
+			<div
 				id="PostLink"
 				onClick={() => {
 					this.props.onLinkClick(this.props.link);
 				}}
 			>
 				{this.props.title}
-			</li>
+			</div>
 		);
 	}
 }

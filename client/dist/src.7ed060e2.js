@@ -28337,7 +28337,7 @@ var PostLink = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this = this;
 
-      return /*#__PURE__*/_react.default.createElement("li", {
+      return /*#__PURE__*/_react.default.createElement("div", {
         id: "PostLink",
         onClick: function onClick() {
           _this.props.onLinkClick(_this.props.link);
@@ -28631,7 +28631,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43453" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42603" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -2,20 +2,31 @@
 	list-style-type: square;
 	margin: 0;
 	padding: 0;
-	width: 15%;
-	background-color: #f1f1f1;
+	width: 14%;
+	background-color: lightblue;
 	height: 100%; /* Full height */
 	position: fixed; /* Make it stick, even on scroll */
 	overflow: auto; /* Enable scrolling if the sidenav has too much content */
+	border: solid 2px;
+	border-color: blue;
+	z-index: 1;
 }
 
 #PostLink{
-	display: list-item
+	padding: 0.5em;
 }
 
 #PostFrame {
+	margin: 0;
+	padding: 0;
 	width: 85%;
 	height: 100%;
 	position: fixed;
 	right: 0;
+}
+
+iframe {
+	border: none;
+	margin: 0;
+	padding: 0;
 }

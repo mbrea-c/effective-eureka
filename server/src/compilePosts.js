@@ -8,7 +8,7 @@ module.exports = () => {
 				fs.mkdirSync(`./public/posts/${file}`);
 			}
 			exec(
-				`htlatex ../../../posts/${file}/index.tex html "" -d. "--interaction=nonstopmode"`,
+				`htlatex ../../../posts/${file}/index.tex "html,mathml" "" -d. "--interaction=nonstopmode"`,
 				{
 					cwd: `./public/posts/${file}/`
 				}
