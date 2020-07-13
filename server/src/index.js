@@ -22,35 +22,34 @@ router.get("/compile", async (ctx, next) => {
 	compileSafe();
 
 	// Update database post index
-	await fsp.readdir("./posts").then(async files => {
-		// Need to wait for all files to be added to index
-		// (files.map will return an array of promises)
-		await Promise.all(
-			files.map(async file => {
-				const fileStat = fs.statSync(`./posts/${file}`);
-				let postName;
-				try {
-					postName = fs.readFileSync(`./posts/${file}/post_name`);
-				} catch (error) {
-					postName = "Nameless post";
-				}
-				await knex.raw(
-					`? ON CONFLICT (id)
+	const postDirs = await fsp.readdir("./posts");
+	// Need to wait for all files to be added to index
+	// (files.map will return an array of promises)
+	await Promise.all(
+		postDirs.map(async file => {
+			const fileStat = fs.statSync(`./posts/${file}`);
+			let postName;
+			try {
+				postName = fs.readFileSync(`./posts/${file}/post_name`);
+			} catch (error) {
+				postName = "Nameless post";
+			}
+			await knex.raw(
+				`? ON CONFLICT (id)
 						DO UPDATE SET
 						id = EXCLUDED.id,
 						name = EXCLUDED.name,
 						date_posted = EXCLUDED.date_posted;`,
-					[
-						knex("posts").insert({
-							id: file,
-							name: postName,
-							date_posted: fileStat.birthtime
-						})
-					]
-				);
-			})
-		);
-	});
+				[
+					knex("posts").insert({
+						id: file,
+						name: postName,
+						date_posted: fileStat.birthtime
+					})
+				]
+			);
+		})
+	);
 	ctx.body = "Compilation completed";
 });
 
