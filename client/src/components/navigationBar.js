@@ -40,8 +40,7 @@ class NavigationBar extends Component {
 				{this.state.data.map(row => (
 					<PostLink
 						class={this.props.activeLink == row.link ? "active" : "inactive"}
-						title={row.name}
-						link={row.link}
+						postData={row}
 						key={row.id}
 						onLinkClick={link => {
 							this.props.onLinkClick(link);

@@ -20,6 +20,11 @@ body {
 	overflow: auto; /* Enable scrolling if the sidenav has too much content */
 }
 
+#NavigationBar label.postDateLabel {
+	font-size: small;
+	color: rgb(120,120,120);
+}
+
 #NavigationBar h2 {
 	font-family: Quicksand; 
 	font-weight: normal;

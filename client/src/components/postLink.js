@@ -7,10 +7,14 @@ class PostLink extends Component {
 				id="PostLink"
 				class={this.props.class}
 				onClick={() => {
-					this.props.onLinkClick(this.props.link);
+					this.props.onLinkClick(this.props.postData.link);
 				}}
 			>
-				{this.props.title}
+				<label class="postNameLabel">{this.props.postData.name}</label>
+				<br />
+				<label class="postDateLabel">
+					{new Date(this.props.postData.date_posted).toDateString()}
+				</label>
 			</div>
 		);
 	}
