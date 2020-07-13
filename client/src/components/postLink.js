@@ -5,6 +5,7 @@ class PostLink extends Component {
 		return (
 			<div
 				id="PostLink"
+				class={this.props.class}
 				onClick={() => {
 					this.props.onLinkClick(this.props.link);
 				}}

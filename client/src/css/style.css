@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Remove white margin on borders of page */
+body {    
+	margin: 0 !important;
+	padding: 0 !important;
+	font-family: Quicksand;
+}
+
 #NavigationBar {
 	list-style-type: square;
 	margin: 0;
@@ -7,20 +18,75 @@
 	height: 100%; /* Full height */
 	position: fixed; /* Make it stick, even on scroll */
 	overflow: auto; /* Enable scrolling if the sidenav has too much content */
-	border: solid 2px;
-	border-color: blue;
+}
+
+#NavigationBar h2 {
+	font-family: Quicksand; 
+	font-weight: normal;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+	padding-top: 0.5em;
+	padding-bottom: 0.2em;
+}
+
+#NavigationBar hr {
+	display: block;
+	height: 0;
+	width: 60%;
+	padding: 0;
+	margin: 0.5em;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#NavigationBar button {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	border: none;
+	background-color: transparent;
+	font-family: 'Material Icons';
+	font-size: 2em;
+}
+
+#NavigationBar button:active {
+	background-color: cornflowerblue;	
+}
+
+#TitleBar {
 	z-index: 1;
+	margin: 0;
+	padding: 0;
+	background-color: cornflowerblue;
+	box-shadow: 0.5em 0 0.5em grey;
+}
+
+#TitleBar h1 {
+	font-family: Oswald, Arial;
+	margin: 0;
+	padding: 0.5em;
+	text-align: center;
 }
 
 #PostLink{
 	padding: 0.5em;
 }
 
+#PostLink.inactive:hover{
+	background-color: lightgreen;
+}
+
+#PostLink.active {
+	background-color: cornflowerblue;
+}
+
 #PostFrame {
+	z-index: -1;
 	margin: 0;
 	padding: 0;
 	width: 85%;
-	height: 100%;
+	height: 90%;
 	position: fixed;
 	right: 0;
 }

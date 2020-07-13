@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import NavigationBar from "./components/navigationBar";
 import PostFrame from "./components/postFrame";
+import TitleBar from "./components/titleBar";
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentPostLink: "https://codetheweb.blog/style-a-navigation-bar-css/"
+			currentPostLink: ""
 		};
 	}
 
@@ -22,7 +23,11 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<NavigationBar onLinkClick={link => this.handleClickedLink(link)} />
+				<TitleBar />
+				<NavigationBar
+					onLinkClick={link => this.handleClickedLink(link)}
+					activeLink={this.state.currentPostLink}
+				/>
 				<PostFrame link={this.state.currentPostLink} />
 			</div>
 		);
